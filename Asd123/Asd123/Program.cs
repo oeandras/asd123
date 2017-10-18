@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Net;
 
 namespace Asd123
 {
@@ -19,6 +20,20 @@ namespace Asd123
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureLogging(factory =>
+                {
+                    factory.AddConsole();
+                    factory.AddFilter("Console", level => level >= LogLevel.Information);
+                })
+                .UseKestrel(options =>
+                {
+                    options.Listen(IPAddress.Loopback, 44301, listenOptions =>
+                    {
+                        listenOptions.UseHttps("sslcert/self-signed-cert.pfx", "alma");
+                    });
+                })
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
     }
