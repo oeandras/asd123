@@ -32,7 +32,7 @@ import { AccountComponent } from './components/account/account.component';
             { path: 'account', component: AccountComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
 })
 export class AppModuleShared {
 }

@@ -1,5 +1,8 @@
 ﻿import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Jsonp, Response, Headers, RequestOptions } from '@angular/http';
+import { ActivatedRoute } from "@angular/router";
+import { JwtHelper } from "angular2-jwt";
+
 
 @Component({
     selector: 'account',
@@ -7,10 +10,39 @@ import { Http } from '@angular/http';
 })
 export class AccountComponent {
 
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        http.get(baseUrl + 'api/account/loginfacebook').subscribe(result => {
-            console.log( result )
-        }, error => console.error(error));
+    jwtHelper: JwtHelper = new JwtHelper();
+    private _localStorage: Storage;
+    private _baseUrl: string;
+    private _http: Http;
+
+    constructor(private activatedRoute: ActivatedRoute, @Inject('LOCALSTORAGE') localStorage: Storage, @Inject('BASE_URL') baseUrl: string, http: Http) {
+        this._localStorage = localStorage;
+        this._baseUrl = baseUrl;
+        this._http = http;
+        this.activatedRoute.queryParams.subscribe(params => {
+            let token = params['token'];
+            
+            this._localStorage.setItem('JWT', token);
+            let user = this.jwtHelper.decodeToken(token)
+            localStorage.setItem('name', user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"])
+            console.log(localStorage.getItem("name")); // Print the parameter to the console. 
+        });
+    }
+
+    showEmail() {
+
+        let token = this._localStorage.getItem('JWT')
+        var headers = new Headers();
+        console.log(token)
+        headers.append('Authorization','Bearer ' + token as string);
+        headers.append('Content-Type', 'application/json');
+
+        let options = new RequestOptions({ headers: headers, method: 'post' });
+
+        this._http.post(this._baseUrl + 'api/account/showemail', null, options).subscribe(result => {
+            console.log(result);
+            }, error => console.error(error));
+            
     }
 
 }

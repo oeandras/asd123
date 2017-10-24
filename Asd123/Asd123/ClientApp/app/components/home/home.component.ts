@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
     selector: 'home',
@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
-    constructor() { }
+    private _localStorage: Storage
+    name: string
+
+    constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
+        this._localStorage = localStorage;
+        let tempname = localStorage.getItem("name");
+        if (tempname != null)
+            this.name = tempname;
+    }
 
     ngOnInit() {
         alert("oninit! :)");

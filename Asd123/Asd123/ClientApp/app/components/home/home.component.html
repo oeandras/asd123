@@ -1,4 +1,6 @@
-<h1>Hello, Guest!</h1>
+<h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
+<ng-template #elseBlock>Guest!</ng-template>
+
 <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
     <div class="form-group">
         <div class="col-md-10">
