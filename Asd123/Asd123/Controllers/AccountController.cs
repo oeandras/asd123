@@ -12,6 +12,8 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Asd123.DTO;
+using Asd123.ApplicationService;
 
 namespace Asd123.Controllers
 {
@@ -20,10 +22,12 @@ namespace Asd123.Controllers
     public class AccountController : Controller
     {
         private IConfiguration _configurationRoot;
+        private readonly IUserService _userService;
 
-        public AccountController( IConfiguration configurationRoot)
+        public AccountController( IConfiguration configurationRoot, IUserService userService)
         {
             _configurationRoot = configurationRoot;
+            _userService = userService;
         }
 
         public IActionResult Login()
@@ -44,7 +48,7 @@ namespace Asd123.Controllers
         }
 
         [HttpGet("[action]")]
-        public IActionResult AuthCallback()
+        public async Task<IActionResult> AuthCallback()
         {
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
 
@@ -53,17 +57,35 @@ namespace Asd123.Controllers
                 return Redirect(Url.Action("Login", "Account"));
             }
 
-            var jwtSecurityToken = GenerateToken();
-            string tokenstring = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            return Redirect(Url.Content("/account?token="+tokenstring));
+            IEnumerable<Claim> a = facebookIdentity.Claims;
+            await _userService.EnsureUser(facebookIdentity.Claims.ToList());
+
+            //var jwtSecurityToken = GenerateToken();
+            //string tokenstring = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            //return Redirect(Url.Content("/account?token="+tokenstring));
+            return Redirect(Url.Content("/account?login=true"));
         }
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("[action]")]
         public IActionResult ShowEmail()
         {
-            var email = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value; 
+            var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
+            string email = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            //var email = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value; 
             return Ok(email);
+        }
+
+        [Authorize]
+        [HttpPost("[action]")]
+        public UserDto GetLoggedInUserInfo()
+        {
+            var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
+            string email = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            string name = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+
+            return new UserDto { Name = name, Email = email };
         }
 
         public IActionResult Logout()
@@ -94,7 +116,7 @@ namespace Asd123.Controllers
                 issuer: _configurationRoot["Tokens:Issuer"],
                 audience: _configurationRoot["Tokens:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(60),
+                expires: DateTime.UtcNow.AddMinutes(1),
                 signingCredentials: signingCredentials
                 );
 

@@ -20,12 +20,18 @@ export class AccountComponent {
         this._baseUrl = baseUrl;
         this._http = http;
         this.activatedRoute.queryParams.subscribe(params => {
-            let token = params['token'];
-            
-            this._localStorage.setItem('JWT', token);
-            let user = this.jwtHelper.decodeToken(token)
-            localStorage.setItem('name', user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"])
-            console.log(localStorage.getItem("name")); // Print the parameter to the console. 
+            //let token = params['token'];
+            //
+            //this._localStorage.setItem('JWT', token);
+            //let user = this.jwtHelper.decodeToken(token)
+            //localStorage.setItem('name', user["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"])
+            //console.log(localStorage.getItem("name")); // Print the parameter to the console.
+            let loggedIn = params["login"];
+            if (loggedIn) {
+                this._http.post(this._baseUrl + 'api/account/getloggedinuserinfo', null, {}).subscribe(result => {
+                    localStorage.setItem('user', JSON.stringify(result.json()));
+                }, error => console.error(error));
+            }
         });
     }
 
@@ -45,4 +51,9 @@ export class AccountComponent {
             
     }
 
+}
+
+export interface User {
+    name: string;
+    email: string;
 }

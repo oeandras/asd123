@@ -1,2 +1,11 @@
 .vs/
 ./Asd123/.vs/
+*.targets
+*.props
+*.pdb
+*.cache
+*.dll
+*.txt
+*.CopyComplete
+/Asd123/Asd13.Repository.EF/obj
+/Asd123/Asd13.Repository.EF/bin/Debug/netcoreapp2.0

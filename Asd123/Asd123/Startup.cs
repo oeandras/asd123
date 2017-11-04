@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Asd123.Repository.EF;
+using Asd123.ApplicationService;
 
 namespace Asd123
 {
@@ -49,22 +52,30 @@ namespace Asd123
                     o.Fields.Add("name");
                     o.Fields.Add("email");
                     o.SaveTokens = true;
-                })
-                .AddJwtBearer(cfg =>
-                {
-                    cfg.RequireHttpsMetadata = false;
-                    cfg.SaveToken = true;
-
-                    cfg.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = Configuration["Tokens:Issuer"],
-                        ValidAudience = Configuration["Tokens:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
-                    };
-
-                }); ;
+                });
+                //.AddJwtBearer(cfg =>
+                //{
+                //    cfg.RequireHttpsMetadata = false;
+                //    cfg.SaveToken = true;
+                //
+                //    cfg.TokenValidationParameters = new TokenValidationParameters()
+                //    {
+                //        ValidIssuer = Configuration["Tokens:Issuer"],
+                //        ValidAudience = Configuration["Tokens:Audience"],
+                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
+                //        ClockSkew = TimeSpan.Zero
+                //    };
+                //
+                //});
             services.AddCors();
             services.AddMvc();
+
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=Asd123.NewDb;Trusted_Connection=True;";
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connection));
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

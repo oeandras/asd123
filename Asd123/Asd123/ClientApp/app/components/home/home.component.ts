@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { User } from "../account/account.component";
 
 @Component({
     selector: 'home',
@@ -11,9 +12,12 @@ export class HomeComponent {
 
     constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
         this._localStorage = localStorage;
-        let tempname = localStorage.getItem("name");
-        if (tempname != null)
-            this.name = tempname;
+        let user = localStorage.getItem("user");
+        console.log(user);
+        if (user != null) {
+            let u = JSON.parse(user) as User;
+            this.name = u.name;
+        }
     }
 
     ngOnInit() {
