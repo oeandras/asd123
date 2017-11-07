@@ -664,7 +664,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cregz\\.nuget\\packages\\": {},
+    "C:\\Users\\Marcus\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -673,17 +673,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\cregz\\Source\\Repos\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj",
       "projectName": "Asd123.Domain",
-      "projectPath": "C:\\Users\\cregz\\Source\\Repos\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj",
-      "packagesPath": "C:\\Users\\cregz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cregz\\Source\\Repos\\asd123\\Asd123\\Asd123.Domain\\obj\\",
+      "projectPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj",
+      "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\cregz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Marcus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -13,9 +13,13 @@
                         </span>
                     </label>
                     <input type="text" class="form-control" readonly>
+                    <p>
+                        <input type="file" (change)="fileEvent($event)" />
+                    </p>
                 </div>
                 <button (click)="myFunc()" type="button" class="btn btn-default">Upload</button>
             </div>
         </div>
     </div>
 </form>
+

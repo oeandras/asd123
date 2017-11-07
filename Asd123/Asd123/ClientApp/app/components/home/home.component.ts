@@ -28,9 +28,14 @@ export class HomeComponent {
         alert("Upload successful");
     }
 
+    fileEvent(fileInput: any) {
+
+        let files = fileInput.target.files.name;
+    }
+
     //$(function() {
 
-    //    // We can attach the `fileselect` event to all file inputs on the page
+    //    //  
     //    $(document).on('change', ':file', function () {
     //        var input = $(this),
     //            numFiles = input.get(0).files ? input.get(0).files.length : 1,
