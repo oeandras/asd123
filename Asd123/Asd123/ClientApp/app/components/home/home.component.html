@@ -9,13 +9,10 @@
                 <div class="input-group">
                     <label class="input-group-btn">
                         <span class="btn btn-primary">
-                            Browse&hellip; <input type="file" accept="image/*" style="display: none;" multiple>
+                            Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
                         </span>
                     </label>
-                    <input type="text" class="form-control" readonly>
-                    <p>
-                        <input type="file" (change)="fileEvent($event)" />
-                    </p>
+                    <input id="fileBrowser" type="text" class="form-control" readonly>
                 </div>
                 <button (click)="myFunc()" type="button" class="btn btn-default">Upload</button>
             </div>

@@ -29,8 +29,10 @@ export class HomeComponent {
     }
 
     fileEvent(fileInput: any) {
-
-        let files = fileInput.target.files.name;
+        let file = fileInput.target.files[0];
+        let filename = file.name;
+        let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
+        fileBrowser.value = filename;
     }
 
     //$(function() {
