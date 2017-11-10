@@ -21,7 +21,7 @@ export class HomeComponent {
     }
 
     ngOnInit() {
-        alert("oninit! :)");
+        
     }
 
     myFunc() {

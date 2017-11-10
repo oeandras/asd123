@@ -26,6 +26,14 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="ClientApp\app\components\Resource.Designer.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\app\components\Resource.resx" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\account\account.component.ts" />
@@ -44,6 +52,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\account\account.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\logout\logout.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
