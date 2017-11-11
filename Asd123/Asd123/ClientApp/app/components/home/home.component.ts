@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { User } from "../account/account.component";
+import { ImageService } from "../imageservice/imageservice.component";
 
 @Component({
     selector: 'home',
@@ -7,11 +8,14 @@ import { User } from "../account/account.component";
 })
 export class HomeComponent {
 
-    private _localStorage: Storage
-    name: string
+    private _localStorage: Storage;
+    name: string;
+    private _imageService: ImageService;
+    private _file: any;
 
-    constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
+    constructor( @Inject('LOCALSTORAGE') localStorage: Storage, imageService: ImageService) {
         this._localStorage = localStorage;
+        this._imageService = imageService;
         let user = localStorage.getItem("user");
         console.log(user);
         if (user != null) {
@@ -25,12 +29,12 @@ export class HomeComponent {
     }
 
     myFunc() {
-        alert("Upload successful");
+        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); }, error => { alert("Not Success");});
     }
 
     fileEvent(fileInput: any) {
-        let file = fileInput.target.files[0];
-        let filename = file.name;
+        this._file = fileInput.target.files[0];
+        let filename = this._file.name;
         let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
         fileBrowser.value = filename;
     }
