@@ -3366,7 +3366,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Marcus\\.nuget\\packages\\": {},
+    "C:\\Users\\Szabi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -3375,17 +3375,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.ApplicationService\\Asd123.ApplicationService.csproj",
+      "projectUniqueName": "C:\\Development\\Asd123\\Asd123.ApplicationService\\Asd123.ApplicationService.csproj",
       "projectName": "Asd123.ApplicationService",
-      "projectPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.ApplicationService\\Asd123.ApplicationService.csproj",
-      "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.ApplicationService\\obj\\",
+      "projectPath": "C:\\Development\\Asd123\\Asd123.ApplicationService\\Asd123.ApplicationService.csproj",
+      "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\Asd123\\Asd123.ApplicationService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Marcus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Szabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3398,11 +3398,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd13.Repository.EF\\Asd13.Repository.EF.csproj": {
-              "projectPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd13.Repository.EF\\Asd13.Repository.EF.csproj"
+            "C:\\Development\\Asd123\\Asd13.Repository.EF\\Asd13.Repository.EF.csproj": {
+              "projectPath": "C:\\Development\\Asd123\\Asd13.Repository.EF\\Asd13.Repository.EF.csproj"
             },
-            "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj": {
-              "projectPath": "C:\\Users\\Marcus\\source\\repos\\asd123\\asd123\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj"
+            "C:\\Development\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj": {
+              "projectPath": "C:\\Development\\Asd123\\Asd123.Domain\\Asd123.Domain.csproj"
             }
           }
         }

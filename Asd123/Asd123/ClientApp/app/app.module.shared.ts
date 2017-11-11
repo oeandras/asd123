@@ -11,6 +11,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { AccountComponent } from './components/account/account.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { LogoutComponent } from './components/logout/logout.component';
         FetchDataComponent,
         HomeComponent,
         AccountComponent,
-        LogoutComponent
+        LogoutComponent,
+        UploadComponent
     ],
     imports: [
         CommonModule,

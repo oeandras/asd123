@@ -3,37 +3,38 @@ import { User } from "../account/account.component";
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html'
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 
-    private _localStorage: Storage
-    name: string
+    //private _localStorage: Storage
+    //name: string
 
-    constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
-        this._localStorage = localStorage;
-        let user = localStorage.getItem("user");
-        console.log(user);
-        if (user != null) {
-            let u = JSON.parse(user) as User;
-            this.name = u.name;
-        }
-    }
+    //constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
+    //    this._localStorage = localStorage;
+    //    let user = localStorage.getItem("user");
+    //    console.log(user);
+    //    if (user != null) {
+    //        let u = JSON.parse(user) as User;
+    //        this.name = u.name;
+    //    }
+    //}
 
-    ngOnInit() {
+    //ngOnInit() {
         
-    }
+    //}
 
-    myFunc() {
-        alert("Upload successful");
-    }
+    //myFunc() {
+    //    alert("Upload successful");
+    //}
 
-    fileEvent(fileInput: any) {
-        let file = fileInput.target.files[0];
-        let filename = file.name;
-        let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
-        fileBrowser.value = filename;
-    }
+    //fileEvent(fileInput: any) {
+    //    let file = fileInput.target.files[0];
+    //    let filename = file.name;
+    //    let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
+    //    fileBrowser.value = filename;
+    //}
 
     //$(function() {
 

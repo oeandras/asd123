@@ -1,0 +1,22 @@
+<h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
+<ng-template #elseBlock>Guest!</ng-template>
+
+<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Upload images:</p>
+            <div class="col-lg-6 col-sm-6 col-12">
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
+                        </span>
+                    </label>
+                    <input id="fileBrowser" type="text" class="form-control" readonly>
+                </div>
+                <button (click)="myFunc()" type="button" class="btn btn-default">Upload</button>
+            </div>
+        </div>
+    </div>
+</form>
+

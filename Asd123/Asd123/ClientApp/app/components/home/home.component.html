@@ -1,22 +1,24 @@
-<h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
-<ng-template #elseBlock>Guest!</ng-template>
-
-<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-    <div class="form-group">
-        <div class="col-md-10">
-            <p>Upload images:</p>
-            <div class="col-lg-6 col-sm-6 col-12">
-                <div class="input-group">
-                    <label class="input-group-btn">
-                        <span class="btn btn-primary">
-                            Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
-                        </span>
-                    </label>
-                    <input id="fileBrowser" type="text" class="form-control" readonly>
-                </div>
-                <button (click)="myFunc()" type="button" class="btn btn-default">Upload</button>
-            </div>
-        </div>
+<div class="container">
+    <div class="center">
+        <img src="../../../../Images/logo.png" class="logo" />
+        <h1 class="title">ASD123 Photos</h1>
     </div>
-</form>
+    <div class="center">
+        <h3>Upload and share your photos with anyone.</h3>
+    </div>
 
+    <div class="center" style="padding-top:30px;">
+        <a href="/api/account/loginfacebook" class="btn btn-social btn-facebook btn-lg" style="display:inline !important; }">
+            <i class="fa fa-facebook"></i>
+            Sign in with Facebook
+        </a>
+    </div>
+    <img class="photo" src="../../../../Images/photo2.png">
+</div>
+
+<!--<a class="btn btn-block btn-social btn-facebook">
+    <i class="fa fa-facebook"></i> Sign in with Facebook
+</a>
+<a title="Facebook" class="btn btn-block btn-social btn-lg btn-facevook">
+    <i class="fa fa-facebook"></i> Sign in with Facebook
+</a>-->
