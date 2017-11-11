@@ -7,7 +7,7 @@ namespace Asd123.Domain
     public class ImageInfo : Entity
     {
         //UserIdentifier
-        public string UploadedBy { get; set; }
+        public User UploadedBy { get; set; }
 
         public string Name { get; set; }
 

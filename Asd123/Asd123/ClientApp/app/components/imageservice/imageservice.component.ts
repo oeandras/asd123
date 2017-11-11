@@ -20,4 +20,8 @@ export class ImageService {
         //let options = new RequestOptions({ headers: headers });
         return this._http.post(this._baseUrl + 'api/image/upload', input/*, options*/);
     }
+
+    fetchImages() {
+        return this._http.get(this._baseUrl + 'api/image/getuserimages');
+    }
 }

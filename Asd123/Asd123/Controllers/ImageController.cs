@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Asd123.ApplicationService;
 using System.Security.Claims;
+using Asd123.DTO;
 
 namespace Asd123.Controllers
 {
@@ -25,40 +26,44 @@ namespace Asd123.Controllers
         }
 
         [Authorize]
-        [HttpPost("Upload")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Upload(IFormFile file)
         {
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
             IEnumerable<Claim> a = facebookIdentity.Claims;
             var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
-            //var files = fo.Files;
-            // full path to file in temp location
-            //var filePath = Path.GetTempFileName();
+
             Uri uploadedImageUri = null;
-            //long size = files.Sum(f => f.Length);
-
-            //foreach (var formFile in files)
-            //{
-                if (file.Length > 0)
+            if (file.Length > 0)
+            {
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
-                    }
-
-
-                    // using (var stream = new FileStream(filePath, FileMode.Create))
-                    // {
-                    //     await formFile.CopyToAsync(stream);
-                    // }
+                    file.CopyTo(ms);
+                    uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
                 }
-            //}
+            }
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
             return Ok(new { uploadedImageUri });
+        }
+
+        [Authorize]
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<ImageInfoDto>> GetUserImages()
+        {
+            var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
+            IEnumerable<Claim> a = facebookIdentity.Claims;
+            var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var images = await _imageService.FetchImagesOfUser(user);
+            return images.Select(x => new ImageInfoDto {
+                UploadedAt = x.CreatedAt,
+                Name = x.Name,
+                UploadedBy = x.UploadedBy.Name,
+                ImageId = x.Id.ToString(),
+                ImageUri = x.ImageUri
+            });
         }
     }
 }

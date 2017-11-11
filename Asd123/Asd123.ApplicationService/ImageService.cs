@@ -2,6 +2,7 @@
 using Asd13.Repository.EF;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,11 @@ namespace Asd123.ApplicationService
             this.imageRepo = imageRepo;
         }
 
+        public async Task<IReadOnlyCollection<ImageInfo>> FetchImagesOfUser(User user)
+        {
+            return await imageRepo.FindAll(x => x.UploadedBy.Id == user.Id);
+        }
+
         public async Task<Uri> UploadImage(byte[] imageBytes, User uploader, string name)
         {
             ImageUploadResult result = await imageRepo.UploadImage(imageBytes);
@@ -23,12 +29,14 @@ namespace Asd123.ApplicationService
             ImageInfo info = new ImageInfo()
             {
                 ImageId = result.ImageId.ToString(),
-                UploadedBy = uploader.UserIdentifier,
+                UploadedBy = uploader,
                 ImageUri = result.ImageUri.ToString(),
                 Name = name
             };
             await imageRepo.Create(info);
             return result.ImageUri;
         }
+
+        
     }
 }
