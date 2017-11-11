@@ -16,5 +16,7 @@ namespace Asd123.DTO
         public string ImageId { get; set; }
 
         public DateTimeOffset UploadedAt { get; set; }
+
+        public string Base64Picture { get; set; }
     }
 }
