@@ -37,16 +37,23 @@ export class UploadComponent {
     }
 
     uploadClick() {
-        this._imageService.uploadImage(this._file).subscribe(
-            response =>
-            {
-                this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
-                this.fileBrowser.value = ""
-            },
-            error =>
-            {
-                this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
-            });
+        if (this.fileBrowser == null || this.fileBrowser.value == null || this.fileBrowser.value=="")
+        {
+            //alert("No file selected.");
+            this.messageComponent.ShowMessage("No file selected.", MessageType.Error);
+        }
+        else
+        {
+            this._imageService.uploadImage(this._file).subscribe(
+                response => {
+                    this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
+                    this.fileBrowser.value = ""
+                },
+                error => {
+                    this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
+                });
+        }
+        
     }
 
     fileEvent(fileInput: any) {
