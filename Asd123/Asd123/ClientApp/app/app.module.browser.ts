@@ -5,6 +5,7 @@ import { AppComponent } from './components/app/app.component';
 import { OpaqueToken } from '@angular/core';
 import { ImageService } from "./components/imageservice/imageservice.component";
 import { UserService } from "./components/userservice/userservice.component";
+import { CanActivateViaUserLoggedInGuard } from "./components/guards/CanActivateViaUserServiceGuard";
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -16,7 +17,8 @@ import { UserService } from "./components/userservice/userservice.component";
         { provide: 'BASE_URL', useFactory: getBaseUrl },
         { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
         ImageService,
-        UserService
+        UserService,
+        CanActivateViaUserLoggedInGuard
     ]
 })
 export class AppModule {

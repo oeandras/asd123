@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { CanActivateViaUserLoggedInGuard } from "./components/guards/CanActivateViaUserServiceGuard";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,7 @@ import { UploadComponent } from './components/upload/upload.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'upload', component: UploadComponent },
+            { path: 'upload', component: UploadComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
             { path: 'account', component: AccountComponent },
             { path: 'logout', component: LogoutComponent },
             { path: '**', redirectTo: 'home' }
