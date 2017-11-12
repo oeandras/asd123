@@ -29,8 +29,8 @@ import { CanActivateViaUserLoggedInGuard } from "./components/guards/CanActivate
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'upload', component: UploadComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
-            { path: 'account', component: AccountComponent },
-            { path: 'logout', component: LogoutComponent },
+            { path: 'account', component: AccountComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
+            { path: 'logout', component: LogoutComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
             { path: '**', redirectTo: 'home' }
         ])
     ],
