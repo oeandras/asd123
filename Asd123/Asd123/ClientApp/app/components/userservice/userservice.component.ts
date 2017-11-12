@@ -21,11 +21,7 @@ export class UserService {
         return this._http
           .post(this._baseUrl + 'api/account/getloggedinuserinfo', null)
           .map(result => {
-                if(result.status == 200){
                     return result.json() as User;
-                } else {
-                    throw("200"); 
-                }
            });
     }
 
