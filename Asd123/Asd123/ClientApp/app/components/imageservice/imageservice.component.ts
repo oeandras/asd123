@@ -1,6 +1,7 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { User } from "../userservice/user";
+import { ImageInfo } from "./imageinfo";
 
 @Injectable()
 export class ImageService {
@@ -22,6 +23,8 @@ export class ImageService {
     }
 
     fetchImages() {
-        return this._http.get(this._baseUrl + 'api/image/getuserimages');
+        return this._http.get(this._baseUrl + 'api/image/getuserimages').map(result => {
+                    return result.json() as ImageInfo;
+           });;
     }
 }

@@ -42,8 +42,23 @@ namespace Asd123
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(o =>
                 {
-                    o.LoginPath = new PathString("/Account/Login");
-                    o.LogoutPath = new PathString("/Home/Index");
+                    //o.LoginPath = new PathString("/Account/Login");
+                    //o.LogoutPath = new PathString("/Home/Index");
+                    o.Events = new CookieAuthenticationEvents()
+                    {
+                        OnRedirectToLogin = (ctx) =>
+                        {
+                            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+                            {
+                                ctx.Response.StatusCode = 401;
+                            }
+                            else
+                                ctx.Response.Redirect(ctx.RedirectUri);
+
+                            return Task.CompletedTask;
+                        }
+                    };
+
                 })
                 .AddFacebook(o =>
                 {

@@ -63,7 +63,7 @@ namespace Asd123.Controllers
                 UploadedBy = x.UploadedBy.Name,
                 ImageId = x.Id.ToString(),
                 ImageUri = x.ImageUri,
-                Base64Picture = _imageService.GetBase64String(x.ImageId).Result
+                //Base64Picture = _imageService.GetBase64String(x.ImageId).Result
             });
         }
     }
