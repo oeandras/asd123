@@ -19,7 +19,8 @@ export class UploadComponent {
     private _imageService: ImageService;
     private _file: any;
     private user : User;
-    private arr : Observable<ImageInfo[]>;
+    private arr: Observable<ImageInfo[]>;
+    private fileBrowser: HTMLInputElement;
 
     constructor( imageService: ImageService, private userservice : UserService) {
         this._imageService = imageService;
@@ -34,14 +35,14 @@ export class UploadComponent {
     }
 
     uploadClick() {
-        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); }, error => { alert("Not Success"); });
+        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); this.fileBrowser.value="" }, error => { alert("Not Success"); });
     }
 
     fileEvent(fileInput: any) {
         this._file = fileInput.target.files[0];
         let filename = this._file.name;
-        let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
-        fileBrowser.value = filename;
+        this.fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
+        this.fileBrowser.value = filename;
     }
 
     getClick() {
