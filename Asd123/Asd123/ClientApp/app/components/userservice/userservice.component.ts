@@ -30,6 +30,7 @@ export class UserService {
     }
 
     logOutUser(){
-        
+        return this._http
+          .post(this._baseUrl + 'api/account/logout', null);
     }
 }
