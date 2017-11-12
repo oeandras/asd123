@@ -27,7 +27,7 @@
                         <span class='glyphicon glyphicon-th-list'></span> Log in with Facebook
                     </a>
                 </li>-->
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedInUser()">
                     <a [routerLink]="['/logout']">
                         <span class='glyphicon glyphicon-th-list'></span> Logout
                     </a>
