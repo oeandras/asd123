@@ -54,6 +54,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\account\account.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\guards\CanActivateViaUserServiceGuard.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\imageservice\imageinfo.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\imageservice\imageservice.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\logout\logout.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\upload\upload.component.ts" />
