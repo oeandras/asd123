@@ -1,7 +1,9 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import { User } from "./user";
 
 @Injectable()
@@ -15,10 +17,16 @@ export class UserService {
         this._baseUrl = baseUrl;
     }
 
-    getLoggedInUser() : Observable<User>{
+    getLoggedInUser() {
         return this._http
           .post(this._baseUrl + 'api/account/getloggedinuserinfo', null)
-          .map(result => {return result.json() as User}); 
+          .map(result => {
+                if(result.status == 200){
+                    return result.json() as User;
+                } else {
+                    throw("200"); 
+                }
+           });
     }
 
     logOutUser(){

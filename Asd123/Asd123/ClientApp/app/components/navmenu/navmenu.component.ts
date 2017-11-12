@@ -11,7 +11,7 @@ export class NavMenuComponent {
 
     private user: User;
 
-    constructor( @Inject('LOCALSTORAGE') localStorage: Storage, private userservice : UserService) {
+    constructor( private userservice : UserService ) {
          userservice
         .getLoggedInUser()
         .subscribe(result => {this.user=result},
