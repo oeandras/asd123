@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
+﻿import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { ImageService } from "../imageservice/imageservice.component";
 import { UserService } from "../userservice/userservice.component";
 import { User } from "../userservice/user";
@@ -6,6 +6,7 @@ import { ImageInfo } from "../imageservice/imageinfo";
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/toarray';
 import { Observable } from 'rxjs/observable';
+import { UIMessageComponent, MessageType } from "../uimessage/uimessage.component";
 
 @Component({
     selector: 'upload',
@@ -21,6 +22,7 @@ export class UploadComponent {
     private user : User;
     private arr: Observable<ImageInfo[]>;
     private fileBrowser: HTMLInputElement;
+    @ViewChild(UIMessageComponent) private messageComponent: UIMessageComponent;
 
     constructor( imageService: ImageService, private userservice : UserService) {
         this._imageService = imageService;
@@ -35,7 +37,16 @@ export class UploadComponent {
     }
 
     uploadClick() {
-        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); this.fileBrowser.value="" }, error => { alert("Not Success"); });
+        this._imageService.uploadImage(this._file).subscribe(
+            response =>
+            {
+                this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
+                this.fileBrowser.value = ""
+            },
+            error =>
+            {
+                this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
+            });
     }
 
     fileEvent(fileInput: any) {

@@ -10,7 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UploadComponent } from './components/upload/upload.component';
-import { CanActivateViaUserLoggedInGuard } from "./components/guards/CanActivateViaUserServiceGuard";
+import { CanActivateViaUserLoggedInGuard } from './components/guards/CanActivateViaUserServiceGuard';
+import { UIMessageComponent } from './components/uimessage/uimessage.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { CanActivateViaUserLoggedInGuard } from "./components/guards/CanActivate
         HomeComponent,
         AccountComponent,
         LogoutComponent,
-        UploadComponent
+        UploadComponent,
+        UIMessageComponent
     ],
     imports: [
         CommonModule,

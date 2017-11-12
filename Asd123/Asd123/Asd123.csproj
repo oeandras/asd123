@@ -38,6 +38,7 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\account\account.component.ts" />
     <None Remove="ClientApp\app\components\guards\CanActivateViaUserServiceGuard.ts" />
+    <None Remove="ClientApp\app\components\uimessage\uimessage.component.ts" />
     <None Remove="ClientApp\app\components\userservice\user.ts" />
   </ItemGroup>
 
@@ -57,6 +58,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\imageservice\imageinfo.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\imageservice\imageservice.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\logout\logout.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\uimessage\uimessage.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\upload\upload.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\userservice\user.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\userservice\userservice.component.ts" />
