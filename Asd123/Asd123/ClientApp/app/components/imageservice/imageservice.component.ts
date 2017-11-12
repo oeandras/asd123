@@ -1,6 +1,6 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { User } from "../account/account.component";
+import { User } from "../userservice/user";
 
 @Injectable()
 export class ImageService {
