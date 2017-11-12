@@ -24,7 +24,7 @@ namespace Asd123.Controllers
         private IConfiguration _configurationRoot;
         private readonly IUserService _userService;
 
-        public AccountController( IConfiguration configurationRoot, IUserService userService)
+        public AccountController(IConfiguration configurationRoot, IUserService userService)
         {
             _configurationRoot = configurationRoot;
             _userService = userService;
@@ -79,9 +79,12 @@ namespace Asd123.Controllers
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
             string email = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             string name = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
-
-            return new UserDto { Name = name, Email = email };
+            string dateOfBirth = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.DateOfBirth)?.Value;
+            string country = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Country)?.Value;
+            string phone = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.MobilePhone)?.Value;
+            return new UserDto { Name = name, Email = email, Country = country };
         }
+
 
         public IActionResult Logout()
         {

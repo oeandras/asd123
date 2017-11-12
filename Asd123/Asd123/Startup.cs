@@ -49,9 +49,21 @@ namespace Asd123
                 {
                     o.AppId = Configuration["Authentication:Facebook:AppId"];
                     o.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    o.Scope.Add("name");
                     o.Scope.Add("email");
+                    o.Scope.Add("picture");
+                    o.Scope.Add("birthday");
+                    o.Scope.Add("location");
+                    o.Scope.Add("locale");
+                    
                     o.Fields.Add("name");
                     o.Fields.Add("email");
+                    o.Fields.Add("picture");
+                    o.Fields.Add("birthday");
+                    o.Fields.Add("location");
+                    o.Fields.Add("locale");
+
+
                     o.SaveTokens = true;
                 });
 
