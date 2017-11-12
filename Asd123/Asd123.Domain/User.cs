@@ -9,5 +9,7 @@ namespace Asd123.Domain
         public string Email { get; set; }
         public string Name { get; set; }
         public string UserIdentifier { get; set; }
+
+        public List<ImageInfo> UploadedImages { get; set; }
     }
 }

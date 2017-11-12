@@ -40,5 +40,10 @@ namespace Asd123.ApplicationService
                 await _userRepository.Create(u);
             }
         }
+
+        public async Task<User> GetById(string id)
+        {
+            return await _userRepository.FindByIdentifier(id);
+        }
     }
 }

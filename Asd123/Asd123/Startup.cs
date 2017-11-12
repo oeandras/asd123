@@ -18,6 +18,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Asd123.Repository.EF;
 using Asd123.ApplicationService;
+using Asd13.Repository.EF;
 
 namespace Asd123
 {
@@ -53,20 +54,7 @@ namespace Asd123
                     o.Fields.Add("email");
                     o.SaveTokens = true;
                 });
-                //.AddJwtBearer(cfg =>
-                //{
-                //    cfg.RequireHttpsMetadata = false;
-                //    cfg.SaveToken = true;
-                //
-                //    cfg.TokenValidationParameters = new TokenValidationParameters()
-                //    {
-                //        ValidIssuer = Configuration["Tokens:Issuer"],
-                //        ValidAudience = Configuration["Tokens:Audience"],
-                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
-                //        ClockSkew = TimeSpan.Zero
-                //    };
-                //
-                //});
+
             services.AddCors();
             services.AddMvc();
 
@@ -76,6 +64,8 @@ namespace Asd123
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IImageService, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

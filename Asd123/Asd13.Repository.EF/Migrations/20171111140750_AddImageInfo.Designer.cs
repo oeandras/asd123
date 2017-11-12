@@ -11,9 +11,10 @@ using System;
 namespace Asd13.Repository.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171111140750_AddImageInfo")]
+    partial class AddImageInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,11 +36,9 @@ namespace Asd13.Repository.EF.Migrations
 
                     b.Property<DateTimeOffset>("UpdatedAt");
 
-                    b.Property<Guid?>("UploadedById");
+                    b.Property<string>("UploadedBy");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UploadedById");
 
                     b.ToTable("ImageInfos");
                 });
@@ -62,13 +61,6 @@ namespace Asd13.Repository.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Asd123.Domain.ImageInfo", b =>
-                {
-                    b.HasOne("Asd123.Domain.User", "UploadedBy")
-                        .WithMany("UploadedImages")
-                        .HasForeignKey("UploadedById");
                 });
 #pragma warning restore 612, 618
         }

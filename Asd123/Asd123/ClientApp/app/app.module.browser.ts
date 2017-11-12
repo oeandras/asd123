@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
 import { OpaqueToken } from '@angular/core';
+import { ImageService } from "./components/imageservice/imageservice.component";
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -12,7 +13,8 @@ import { OpaqueToken } from '@angular/core';
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },
-        { provide: 'LOCALSTORAGE', useFactory: getLocalStorage }
+        { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
+        ImageService
     ]
 })
 export class AppModule {

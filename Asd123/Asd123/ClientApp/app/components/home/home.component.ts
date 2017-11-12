@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { User } from "../account/account.component";
+import { ImageService } from "../imageservice/imageservice.component";
 
 @Component({
     selector: 'home',
@@ -8,33 +9,36 @@ import { User } from "../account/account.component";
 })
 export class HomeComponent {
 
-    //private _localStorage: Storage
-    //name: string
+    private _localStorage: Storage;
+    name: string;
+    private _imageService: ImageService;
+    private _file: any;
 
-    //constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
-    //    this._localStorage = localStorage;
-    //    let user = localStorage.getItem("user");
-    //    console.log(user);
-    //    if (user != null) {
-    //        let u = JSON.parse(user) as User;
-    //        this.name = u.name;
-    //    }
-    //}
+    constructor( @Inject('LOCALSTORAGE') localStorage: Storage, imageService: ImageService) {
+        this._localStorage = localStorage;
+        this._imageService = imageService;
+        let user = localStorage.getItem("user");
+        console.log(user);
+        if (user != null) {
+            let u = JSON.parse(user) as User;
+            this.name = u.name;
+        }
+    }
 
-    //ngOnInit() {
+    ngOnInit() {
         
-    //}
+    }
 
-    //myFunc() {
-    //    alert("Upload successful");
-    //}
+    myFunc() {
+        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); }, error => { alert("Not Success");});
+    }
 
-    //fileEvent(fileInput: any) {
-    //    let file = fileInput.target.files[0];
-    //    let filename = file.name;
-    //    let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
-    //    fileBrowser.value = filename;
-    //}
+    fileEvent(fileInput: any) {
+        this._file = fileInput.target.files[0];
+        let filename = this._file.name;
+        let fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
+        fileBrowser.value = filename;
+    }
 
     //$(function() {
 
