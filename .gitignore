@@ -7,5 +7,9 @@
 *.dll
 *.txt
 *.CopyComplete
-/Asd123/Asd13.Repository.EF/obj
-/Asd123/Asd13.Repository.EF/bin/Debug/netcoreapp2.0
+/Asd123/Asd13.Repository.EF/obj/*
+/Asd123/Asd13.Repository.EF/bin/*
+/Asd123/Asd13.ApplicationService/obj/*
+/Asd123/Asd123.Domain/obj/*
+/Asd123/Asd13.ApplicationService/obj/*
+/Asd123/Asd123.Domain/bin/*
