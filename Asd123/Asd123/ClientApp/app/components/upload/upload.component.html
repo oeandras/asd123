@@ -15,8 +15,16 @@
                     <input id="fileBrowser" type="text" class="form-control" readonly>
                 </div>
                 <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
+                <button (click)="getClick()" type="button" class="btn btn-default">Get</button>
             </div>
         </div>
     </div>
 </form>
+
+<div class="image-container">
+    <div *ngFor="let image of arr | async">
+        <img src="{{image.imageUri}}"/>
+    </div>
+    
+</div>
 
