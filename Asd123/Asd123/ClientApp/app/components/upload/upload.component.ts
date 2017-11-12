@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit, Inject } from '@angular/core';
-import { User } from "../account/account.component";
 import { ImageService } from "../imageservice/imageservice.component";
+import { UserService } from "../userservice/userservice.component";
+import { User } from "../userservice/user";
 
 @Component({
     selector: 'upload',
@@ -9,22 +10,18 @@ import { ImageService } from "../imageservice/imageservice.component";
 })
 export class UploadComponent {
 
-    private _localStorage: Storage;
     name: string;
     email: string;
     private _imageService: ImageService;
     private _file: any;
+    private user : User;
 
-    constructor( @Inject('LOCALSTORAGE') localStorage: Storage, imageService: ImageService) {
-        this._localStorage = localStorage;
+    constructor( imageService: ImageService, private userservice : UserService) {
         this._imageService = imageService;
-        let user = localStorage.getItem("user");
-        console.log(user);
-        if (user != null) {
-            let u = JSON.parse(user) as User;
-            this.name = u.name;
-            this.email = u.email;
-        }
+        userservice
+            .getLoggedInUser()
+            .subscribe(result => {this.user=result; this.name = result.name; this.email = result.email},
+                        error => console.log(error));
     }
 
     ngOnInit() {

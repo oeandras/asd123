@@ -1,4 +1,6 @@
 import { Component, Inject } from '@angular/core';
+import { User } from '../userservice/user';
+import { UserService } from '../userservice/userservice.component';
 
 @Component({
     selector: 'nav-menu',
@@ -7,11 +9,13 @@ import { Component, Inject } from '@angular/core';
 })
 export class NavMenuComponent {
 
-    private user: any;
+    private user: User;
 
-    constructor( @Inject('LOCALSTORAGE') localStorage: Storage) {
-
-        this.user = localStorage.getItem("user");
+    constructor( @Inject('LOCALSTORAGE') localStorage: Storage, private userservice : UserService) {
+         userservice
+        .getLoggedInUser()
+        .subscribe(result => {this.user=result},
+                    error => console.log(error));
     }
 
     isLoggedInUser() {
