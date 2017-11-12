@@ -35,7 +35,14 @@ export class UploadComponent {
     }
 
     uploadClick() {
-        this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); this.fileBrowser.value="" }, error => { alert("Not Success"); });
+        if (this.fileBrowser == null || this.fileBrowser.value == null || this.fileBrowser.value=="")
+        {
+            alert("No file selected.");
+        }
+        else
+        {
+            this._imageService.uploadImage(this._file).subscribe(response => { alert("Success"); this.fileBrowser.value = "" }, error => { alert("Not Success"); });
+        }
     }
 
     fileEvent(fileInput: any) {
