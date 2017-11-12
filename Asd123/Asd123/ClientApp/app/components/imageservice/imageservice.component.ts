@@ -24,7 +24,7 @@ export class ImageService {
 
     fetchImages() {
         return this._http.get(this._baseUrl + 'api/image/getuserimages').map(result => {
-                    return result.json() as ImageInfo;
-           });;
+            return result.json() as ImageInfo[];
+        });
     }
 }
