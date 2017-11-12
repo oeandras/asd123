@@ -18,13 +18,6 @@ export class AccountComponent {
         this._localStorage = localStorage;
         this._baseUrl = baseUrl;
         this._http = http;
-        this.activatedRoute.queryParams.subscribe(params => {
-            let loggedIn = params["login"];
-            if (loggedIn) {
-                this._http.post(this._baseUrl + 'api/account/getloggedinuserinfo', null, {}).subscribe(result => {
-                    localStorage.setItem('user', JSON.stringify(result.json()));
-                }, error => console.error(error));
-            }
-        });
+        
     }
 }
