@@ -79,10 +79,14 @@ namespace Asd123.Controllers
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
             string email = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             string name = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            string gender = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Gender)?.Value;
             string dateOfBirth = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.DateOfBirth)?.Value;
+            string locale = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Locality)?.Value;
+            string uri = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Uri)?.Value;
+            string id = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             string country = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Country)?.Value;
-            string phone = facebookIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.MobilePhone)?.Value;
-            return new UserDto { Name = name, Email = email, Country = country };
+
+            return new UserDto { Name = name, Email = email, DateOfBirth = dateOfBirth, Gender = gender, Id = id, Locale = locale, HomeTown = country };
         }
 
 

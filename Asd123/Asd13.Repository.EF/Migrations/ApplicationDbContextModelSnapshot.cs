@@ -51,7 +51,15 @@ namespace Asd13.Repository.EF.Migrations
 
                     b.Property<DateTimeOffset>("CreatedAt");
 
+                    b.Property<string>("DateOfBirth");
+
                     b.Property<string>("Email");
+
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Hometown");
+
+                    b.Property<string>("Locale");
 
                     b.Property<string>("Name");
 
