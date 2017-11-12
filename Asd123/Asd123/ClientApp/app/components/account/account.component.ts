@@ -40,17 +40,15 @@ export class AccountComponent {
         let token = this._localStorage.getItem('JWT')
         var headers = new Headers();
         console.log(token)
-        headers.append('Authorization','Bearer ' + token as string);
+        headers.append('Authorization', 'Bearer ' + token as string);
         headers.append('Content-Type', 'application/json');
 
         let options = new RequestOptions({ headers: headers, method: 'post' });
 
         this._http.post(this._baseUrl + 'api/account/showemail', null, options).subscribe(result => {
             console.log(result);
-            }, error => console.error(error));
-            
+        }, error => console.error(error));
     }
-
 }
 
 export interface User {

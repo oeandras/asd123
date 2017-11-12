@@ -12,26 +12,21 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedInUser()">
+                <li [routerLinkActive]="['link-active']" >
                     <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/counter']">
-                        <span class='glyphicon glyphicon-education'></span> Counter
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedInUser()">
+                    <a [routerLink]="['/upload']">
+                        <span class='glyphicon glyphicon-th-list'></span> Upload images
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/fetch-data']">
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
+                <!--<li [routerLinkActive]="['link-active']">
                     <a href="/api/account/loginfacebook">
                         <span class='glyphicon glyphicon-th-list'></span> Log in with Facebook
                     </a>
-                </li>
+                </li>-->
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/logout']">
                         <span class='glyphicon glyphicon-th-list'></span> Logout
