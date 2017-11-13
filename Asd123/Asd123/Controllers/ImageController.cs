@@ -25,6 +25,7 @@ namespace Asd123.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload(List<IFormFile> files)
         {
@@ -32,14 +33,15 @@ namespace Asd123.Controllers
             IEnumerable<Claim> a = facebookIdentity.Claims;
             var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
-            Uri uploadedImageUri = null;
+            List<Uri> uploadedImageUris = new List<Uri>();
             foreach (var file in files)
                 if (file.Length > 0)
                 {
                     using (var ms = new MemoryStream())
                     {
                         file.CopyTo(ms);
-                        uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
+                        var uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
+                        uploadedImageUris.Add(uploadedImageUri);
                     }
                 }
 
@@ -49,7 +51,7 @@ namespace Asd123.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            return Ok(new { uploadedImageUri });
+            return Ok(new { uploadedImageUris });
         }
 
         [Authorize]
@@ -66,8 +68,7 @@ namespace Asd123.Controllers
                 Name = x.Name,
                 UploadedBy = x.UploadedBy.Name,
                 ImageId = x.Id.ToString(),
-                ImageUri = x.ImageUri,
-                //Base64Picture = _imageService.GetBase64String(x.ImageId).Result
+                ImageUri = x.ImageUri
             });
         }
     }
