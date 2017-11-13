@@ -87,6 +87,9 @@ export class UploadComponent {
         if (this._files.length == 1) {
             this.fileBrowser.value = this._files[0].name;
         }
+        else if (this._files.length == 0) {
+            this.fileBrowser.value = "";
+        }
         else {
             this.fileBrowser.value = this._files.length.toString() + " files selected";
         }
