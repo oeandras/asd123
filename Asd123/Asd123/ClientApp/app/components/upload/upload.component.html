@@ -1,4 +1,8 @@
 <div class="container">
+    <div class="footer col-md-6">
+        <uimessage></uimessage>
+    </div>
+
     <div class="rightalign">
         <img src="{{profilepic_src}}" style="border-radius:50%" />
     </div>
@@ -21,7 +25,6 @@
                             <input id="fileBrowser" type="text" class="form-control" readonly>
                         </div>
                         <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
-                        <!--<button (click)="getClick()" type="button" class="btn btn-default">Get</button>-->
                     </div>
                 </div>
             </div>
@@ -29,22 +32,14 @@
     </div>
 
 
-    <div class="rightalign">
-        <div style="padding-top:50px">
-            <h5>Name: {{user.name}}</h5>
-            <h5>Email: {{user.email}}</h5>
-            <h5>Gender: {{user.gender}}</h5>
-            <h5>Date of Birth: {{user.dateOfBirth}}</h5>
-        </div>
+    <div class="userinfo">
+        <h5>Name: {{user.name}}</h5>
+        <h5>Email: {{user.email}}</h5>
+        <h5>Gender: {{user.gender}}</h5>
+        <h5>Date of Birth: {{user.dateOfBirth}}</h5>
     </div>
 
-
-    <!--<div class="image-container center">
-        <div *ngFor="let image of arr | async">
-            <img src="{{image.imageUri}}" style="height:50%; width:50%" />
-        </div>
-    </div>-->
-    <div style="padding-top:120px;">
+    <div class="center" style="padding-top:120px;">
         <div *ngFor="let image of arr | async" class="col-md-4" style="padding-bottom:4px;">
             <div class="image-container">
                 <img class="image" src="{{image.imageUri}}" />

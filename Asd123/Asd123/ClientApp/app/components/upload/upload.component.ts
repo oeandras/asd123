@@ -63,17 +63,18 @@ export class UploadComponent {
         }
         else
         {
-            this._imageService.uploadImage(this._file).subscribe(
+            this._imageService.uploadImage(this._files).subscribe(
                 response => {
                     this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
-                    this.fileBrowser.value = ""
+                    this.fileBrowser.value = "";
+                    this.loadImages();
                 },
                 error => {
                     this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
                 });
         }
         
-        this._imageService.uploadImage(this._files).subscribe(response => { alert("Success"); this.fileBrowser.value = ""; this.loadImages(); }, error => { alert("Not Success"); });
+        //this._imageService.uploadImage(this._files).subscribe(response => { alert("Success"); this.fileBrowser.value = ""; this.loadImages(); }, error => { alert("Not Success"); });
 
     }
 
