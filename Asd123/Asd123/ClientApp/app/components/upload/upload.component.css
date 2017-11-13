@@ -89,3 +89,13 @@
         -moz-transition: opacity .005s ease-in-out;
         -webkit-transition: opacity .005s ease-in-out;
     }
+
+
+
+.footer-new {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
