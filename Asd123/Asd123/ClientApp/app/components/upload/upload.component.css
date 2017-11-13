@@ -14,7 +14,7 @@
 
 .rightalign {
     position: absolute;
-    right:10px;
+    right: 10px;
     top: 5px;
 }
 
@@ -55,6 +55,7 @@
     float: left;
     display: block;
     background-color: whitesmoke;
+    vertical-align: middle;
 }
 
 .logo {
@@ -62,6 +63,13 @@
     width: 60px;
 }
 
-.down{
-    padding-top:90px;
+.down {
+    padding-top: 90px;
+}
+
+.logout {
+    position: absolute;
+    right: 100px;
+    top: 13px;
+
 }

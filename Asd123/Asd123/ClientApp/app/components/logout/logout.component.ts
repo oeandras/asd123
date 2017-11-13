@@ -29,7 +29,6 @@ export class LogoutComponent {
     logOutUser() {
       return this.userservice.logOutUser;
       
-       
     }
 
 
