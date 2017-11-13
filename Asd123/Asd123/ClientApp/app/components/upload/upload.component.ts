@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
+﻿import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { ImageService } from "../imageservice/imageservice.component";
 import { UserService } from "../userservice/userservice.component";
 import { User } from "../userservice/user";
@@ -6,6 +6,7 @@ import { ImageInfo } from "../imageservice/imageinfo";
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/toarray';
 import { Observable } from 'rxjs/observable';
+import { UIMessageComponent, MessageType } from "../uimessage/uimessage.component";
 
 @Component({
     selector: 'upload',
@@ -23,6 +24,7 @@ export class UploadComponent {
     private profilepic_src: string;
     private arr: Observable<ImageInfo[]>;
     private fileBrowser: HTMLInputElement;
+    @ViewChild(UIMessageComponent) private messageComponent: UIMessageComponent;
 
     constructor(imageService: ImageService, private userservice: UserService) {
         userservice
@@ -43,7 +45,7 @@ export class UploadComponent {
     }
 
     ngOnInit() {
-
+        
     }
 
     loadImages() {
@@ -54,6 +56,23 @@ export class UploadComponent {
     }
 
     uploadClick() {
+        if (this.fileBrowser == null || this.fileBrowser.value == null || this.fileBrowser.value=="")
+        {
+            //alert("No file selected.");
+            this.messageComponent.ShowMessage("No file selected.", MessageType.Error);
+        }
+        else
+        {
+            this._imageService.uploadImage(this._file).subscribe(
+                response => {
+                    this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
+                    this.fileBrowser.value = ""
+                },
+                error => {
+                    this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
+                });
+        }
+        
         this._imageService.uploadImage(this._files).subscribe(response => { alert("Success"); this.fileBrowser.value = ""; this.loadImages(); }, error => { alert("Not Success"); });
 
     }
