@@ -50,7 +50,7 @@ namespace Asd123.Controllers
                     }
                 }
             }
-
+            
             return Ok(new { uploadedImageUris });
         }
 
