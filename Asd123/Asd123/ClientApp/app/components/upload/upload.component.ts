@@ -31,7 +31,7 @@ export class UploadComponent {
             .getLoggedInUser()
             .subscribe(result => {
                 this.user = result;
-                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=small";
+                this.profilepic_src = "https://graph.facebook.com/" + result.id + "/picture?type=small";
             },
             error => console.log(error));
 
@@ -45,7 +45,7 @@ export class UploadComponent {
     }
 
     ngOnInit() {
-        
+
     }
 
     loadImages() {
@@ -56,13 +56,11 @@ export class UploadComponent {
     }
 
     uploadClick() {
-        if (this.fileBrowser == null || this.fileBrowser.value == null || this.fileBrowser.value=="")
-        {
+        if (this.fileBrowser == null || this.fileBrowser.value == null || this.fileBrowser.value == "") {
             //alert("No file selected.");
             this.messageComponent.ShowMessage("No file selected.", MessageType.Error);
         }
-        else
-        {
+        else {
             this._imageService.uploadImage(this._files).subscribe(
                 response => {
                     this.messageComponent.ShowMessage("Upload successful", MessageType.Success);
@@ -73,7 +71,7 @@ export class UploadComponent {
                     this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
                 });
         }
-        
+
         //this._imageService.uploadImage(this._files).subscribe(response => { alert("Success"); this.fileBrowser.value = ""; this.loadImages(); }, error => { alert("Not Success"); });
 
     }
@@ -92,7 +90,6 @@ export class UploadComponent {
         else {
             this.fileBrowser.value = this._files.length.toString() + " files selected";
         }
-
     }
 
     profileClick($event: any) {

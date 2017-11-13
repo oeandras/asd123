@@ -19,18 +19,30 @@
 }
 
 .image-container {
-    padding: 5px;
     height: 240px;
     width: 360px;
+    text-align: center;
 }
 
 .image {
     height: 240px;
-    width: 360px;
-    display: block;
+    max-width: 360px;
+    display: inline-block;
+    margin: 0 auto;
+    transition: opacity .005s ease-in-out;
+    -moz-transition: opacity .005s ease-in-out;
+    -webkit-transition: opacity .005s ease-in-out;
+    cursor: pointer;
 }
 
-.footer {
+    .image:hover {
+        opacity: 0.7;
+        transition: opacity .005s ease-in-out;
+        -moz-transition: opacity .005s ease-in-out;
+        -webkit-transition: opacity .005s ease-in-out;
+    }
+
+​.footer {
     position: fixed;
     bottom: 0;
     width: 60%;
@@ -55,7 +67,6 @@
     float: left;
     display: block;
     background-color: whitesmoke;
-    vertical-align: middle;
 }
 
 .logo {
@@ -71,5 +82,19 @@
     position: absolute;
     right: 100px;
     top: 13px;
-
 }
+
+.profilepic {
+    transition: opacity .005s ease-in-out;
+    -moz-transition: opacity .005s ease-in-out;
+    -webkit-transition: opacity .005s ease-in-out;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .profilepic:hover {
+        opacity: 0.7;
+        transition: opacity .005s ease-in-out;
+        -moz-transition: opacity .005s ease-in-out;
+        -webkit-transition: opacity .005s ease-in-out;
+    }
