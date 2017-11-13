@@ -90,8 +90,12 @@ namespace Asd123.Controllers
         }
 
 
+
+        [HttpPost("[action]")]
         public IActionResult Logout()
         {
+           
+       
             HttpContext.SignOutAsync();
             return Redirect(Url.Action("Index", "Home"));
         }
