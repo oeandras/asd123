@@ -1,4 +1,5 @@
 ﻿import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'uimessage',
@@ -23,9 +24,15 @@ export class UIMessageComponent {
         this.messageText = messageText;
         this.messageType = messageType;
         this.isVisible = true;
+        this.hideMessageTimer(5000);
     }
     private hideMessage() {
         this.isVisible = false;
+    }
+
+    private hideMessageTimer(hideInterval: number) {
+        let timer = Observable.timer(hideInterval);
+        timer.subscribe(() => this.hideMessage());
     }
 
     private setAlertClass() {
