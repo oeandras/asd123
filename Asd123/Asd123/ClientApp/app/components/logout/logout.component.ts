@@ -17,17 +17,18 @@ export class LogoutComponent {
     private _baseUrl: string;
     private userservice: UserService;
 
-    constructor( userservice: UserService) {
+    constructor(http: Http, @Inject('BASE_URL') baseUrl: string /*userservice: UserService*/) {
 
-        this.userservice = userservice;
-        /*http: Http, @Inject('BASE_URL') baseUrl: string*/
-       /* this._http = http;
-        this._baseUrl = baseUrl;*/
-        //   this._http.post(this._baseUrl + 'api/account/logout', null);
+       // this.userservice = userservice;
+        
+        this._http = http;
+        this._baseUrl = baseUrl;
+    
     }
 
     logOutUser() {
-      return this.userservice.logOutUser;
+        return this._http
+            .post(this._baseUrl + 'api/account/logout', null);
       
     }
 

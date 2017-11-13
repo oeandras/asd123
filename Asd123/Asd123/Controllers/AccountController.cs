@@ -91,7 +91,7 @@ namespace Asd123.Controllers
 
 
 
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public IActionResult Logout()
         {
            
