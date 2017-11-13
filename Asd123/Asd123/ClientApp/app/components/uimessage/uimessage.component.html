@@ -1,3 +1,15 @@
-<div class="col-md-12" *ngIf="isVisible">
-    <div [ngClass]="setAlertClass()" role="alert">{{messageText}}</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" *ngIf="isVisible">
+            <div [ngClass]="setAlertClass()" role="alert">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">{{messageText}}</div>
+                    <div class="col-md-1">
+                        <div class="message-close" (click)="hideMessage()">X</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

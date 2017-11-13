@@ -1,1 +1,4 @@
-﻿
+﻿.message-close {
+    cursor: pointer;
+    text-align: end;
+}
