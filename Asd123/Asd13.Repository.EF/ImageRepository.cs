@@ -2,6 +2,7 @@
 using Asd123.Repository.EF;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ namespace Asd13.Repository.EF
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference("images");
             await container.CreateIfNotExistsAsync();
+            BlobContainerPermissions permissions = await container.GetPermissionsAsync();
+            permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
+            await container.SetPermissionsAsync(permissions);
             var fileId = Guid.NewGuid();
             var blob = container.GetBlockBlobReference(fileId.ToString());
             await blob.UploadFromByteArrayAsync(imageBytes, 0, imageBytes.Length);

@@ -19,7 +19,7 @@ export class UploadComponent {
     email: string;
     private _imageService: ImageService;
     //private _file: any;
-    private _files: any[];
+    private _files: File[];
     private user: User;
     private profilepic_src: string;
     private arr: Observable<ImageInfo[]>;
@@ -87,10 +87,10 @@ export class UploadComponent {
 
     setFileBrowserString() {
         if (this._files.length == 1) {
-            this.fileBrowser.value = this._files[0];
+            this.fileBrowser.value = this._files[0].name;
         }
         else {
-            this.fileBrowser.value = this._files.length + " files selected";
+            this.fileBrowser.value = this._files.length.toString() + " files selected";
         }
 
     }
