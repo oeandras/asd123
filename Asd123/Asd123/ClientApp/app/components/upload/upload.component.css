@@ -13,9 +13,7 @@
 }
 
 .rightalign {
-    position: absolute;
-    right: 10px;
-    top: 5px;
+
 }
 
 .image-container {
@@ -30,15 +28,6 @@
     display: inline-block;
     margin: 0 auto;
     cursor: pointer;
-}
-
-
-​.footer {
-    position: fixed;
-    bottom: 0;
-    width: 60%;
-    text-align: center;
-    z-index: 9999;
 }
 
 .userinfo {
@@ -76,6 +65,9 @@
 }
 
 .profilepic {
+    position: absolute;
+    right: 10px;
+    top: 5px;
     transition: opacity .005s ease-in-out;
     -moz-transition: opacity .005s ease-in-out;
     -webkit-transition: opacity .005s ease-in-out;
@@ -92,9 +84,8 @@
 
 
 
-.footer-new {
+.footer-message {
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;

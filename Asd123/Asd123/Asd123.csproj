@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\NewFolder\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

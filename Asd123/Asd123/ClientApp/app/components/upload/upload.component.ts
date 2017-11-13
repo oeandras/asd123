@@ -81,6 +81,7 @@ export class UploadComponent {
         this._files = fileInput.target.files;
         this.fileBrowser = <HTMLInputElement>document.getElementById("fileBrowser");
         this.setFileBrowserString();
+        this.uploadClick();
     }
 
     setFileBrowserString() {

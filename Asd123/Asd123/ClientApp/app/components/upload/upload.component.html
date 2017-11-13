@@ -1,12 +1,14 @@
 <div class="header">
     <img class="logo inline" src="../../../../Images/logo.png">
     <div class="title inline">ASD123 Photos</div>
-    <img (click)="profileClick()" class="inline rightalign profilepic" src="{{profilepic_src}}" />
+    <img (click)="profileClick()" class="inline profilepic" src="{{profilepic_src}}" />
+    <label class="btn btn-default" style="margin-left:40px;">
+        Upload <input type="file" hidden style="display:none" (change)="fileEvent($event)" >
+    </label>
     <a href="/api/account/logout" class="inline btn btn-default logout">Logout</a>
 </div>
 
 <div class="container">
-    
 
     <div class="down">
         <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
@@ -42,6 +44,6 @@
         </div>
     </div>
 </div>
-<div class="footer-new">
+<div class="footer-message">
     <uimessage></uimessage>
 </div>
