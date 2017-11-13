@@ -14,12 +14,13 @@ export class ImageService {
         this._baseUrl = baseUrl;
     }
 
-    uploadImage(image: any) {
-        let input = new FormData();
-        input.append("file", image);
-        //let headers = new Headers({ 'Content-Type': undefined });
-        //let options = new RequestOptions({ headers: headers });
-        return this._http.post(this._baseUrl + 'api/image/upload', input/*, options*/);
+    uploadImage(images: any[]) {
+        let files = new FormData();
+        for (var i = 0; i < images.length; i++) {
+            files.append("files", images[i]);
+
+        }
+        return this._http.post(this._baseUrl + 'api/image/upload', files);
     }
 
     fetchImages() {

@@ -1,3 +1,26 @@
-﻿.inline{
-    display:inline-block;
+﻿.inline {
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+.rightalign {
+    position: absolute;
+    right: 0px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.image-container {
+    padding: 5px;
+    height: 200px;
+    width: 300px;
+}
+
+.image {
+    height: 200px;
+    width: 300px;
+    display:block;
 }

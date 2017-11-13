@@ -11,11 +11,11 @@ export class NavMenuComponent {
 
     private user: User;
 
-    constructor( private userservice : UserService ) {
-         userservice
-        .getLoggedInUser()
-        .subscribe(result => {this.user=result},
-                    error => console.log(error));
+    constructor(private userservice: UserService) {
+        userservice
+            .getLoggedInUser()
+            .subscribe(result => { this.user = result },
+            error => console.log(error));
     }
 
     isLoggedInUser() {

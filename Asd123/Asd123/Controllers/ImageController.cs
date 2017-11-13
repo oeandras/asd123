@@ -25,24 +25,27 @@ namespace Asd123.Controllers
             _userService = userService;
         }
 
-        [Authorize]
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload(IFormFile file)
+        public async Task<IActionResult> Upload(List<IFormFile> files)
         {
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
             IEnumerable<Claim> a = facebookIdentity.Claims;
             var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
             Uri uploadedImageUri = null;
-            if (file.Length > 0)
-            {
-                using (var ms = new MemoryStream())
+            foreach (var file in files)
+                if (file.Length > 0)
                 {
-                    file.CopyTo(ms);
-                    uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        uploadedImageUri = await _imageService.UploadImage(ms.ToArray(), user, file.FileName);
+                    }
                 }
-            }
 
+            {
+
+            }
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
@@ -57,7 +60,8 @@ namespace Asd123.Controllers
             IEnumerable<Claim> a = facebookIdentity.Claims;
             var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
             var images = await _imageService.FetchImagesOfUser(user);
-            return images.Select(x => new ImageInfoDto {
+            return images.Select(x => new ImageInfoDto
+            {
                 UploadedAt = x.CreatedAt,
                 Name = x.Name,
                 UploadedBy = x.UploadedBy.Name,

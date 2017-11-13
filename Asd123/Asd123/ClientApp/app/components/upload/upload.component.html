@@ -1,30 +1,55 @@
-<h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
-<ng-template #elseBlock>Guest!</ng-template>
+<div class="container">
+    <div class="rightalign">
+        <img src="{{profilepic_src}}" style="border-radius:50%" />
+    </div>
 
-<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-    <div class="form-group">
-        <div class="col-md-10">
-            <p>Upload images:</p>
-            <div class="col-lg-6 col-sm-6 col-12">
-                <div class="input-group" style="float:left">
-                    <label class="input-group-btn">
-                        <span class="btn btn-primary">
-                            Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
-                        </span>
-                    </label>
-                    <input id="fileBrowser" type="text" class="form-control" readonly>
+    <h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
+    <ng-template #elseBlock>Guest!</ng-template>
+
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <p>Upload images:</p>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
+                                </span>
+                            </label>
+                            <input id="fileBrowser" type="text" class="form-control" readonly>
+                        </div>
+                        <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
+                        <!--<button (click)="getClick()" type="button" class="btn btn-default">Get</button>-->
+                    </div>
                 </div>
-                <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
-                <button (click)="getClick()" type="button" class="btn btn-default">Get</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="rightalign">
+        <div style="padding-top:50px">
+            <h5>Name: {{user.name}}</h5>
+            <h5>Email: {{user.email}}</h5>
+            <h5>Gender: {{user.gender}}</h5>
+            <h5>Date of Birth: {{user.dateOfBirth}}</h5>
+        </div>
+    </div>
+
+
+    <!--<div class="image-container center">
+        <div *ngFor="let image of arr | async">
+            <img src="{{image.imageUri}}" style="height:50%; width:50%" />
+        </div>
+    </div>-->
+    <div style="padding-top:120px;">
+        <div *ngFor="let image of arr | async" class="col-md-4" style="padding-bottom:4px;">
+            <div class="image-container">
+                <img class="image" src="{{image.imageUri}}" />
             </div>
         </div>
     </div>
-</form>
-
-<div class="image-container">
-    <div *ngFor="let image of arr | async">
-        <img src="{{image.imageUri}}"/>
-    </div>
-    
 </div>
 
