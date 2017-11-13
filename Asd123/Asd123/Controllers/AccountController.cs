@@ -59,7 +59,7 @@ namespace Asd123.Controllers
 
             IEnumerable<Claim> a = facebookIdentity.Claims;
             await _userService.EnsureUser(facebookIdentity.Claims.ToList());
-
+                
             return Redirect(Url.Content("/account?login=true"));
         }
 
@@ -90,8 +90,12 @@ namespace Asd123.Controllers
         }
 
 
+
+        [HttpPost("[action]")]
         public IActionResult Logout()
         {
+           
+       
             HttpContext.SignOutAsync();
             return Redirect(Url.Action("Index", "Home"));
         }
