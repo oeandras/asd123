@@ -12,5 +12,7 @@ namespace Asd123.Repository.EF
 
         public DbSet<User> Users { get; set; }
         public DbSet<ImageInfo> ImageInfos { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PictureTag> PictureTags { get; set; }
     }
 }

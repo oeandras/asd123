@@ -44,6 +44,44 @@ namespace Asd13.Repository.EF.Migrations
                     b.ToTable("ImageInfos");
                 });
 
+            modelBuilder.Entity("Asd123.Domain.PictureTag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset>("CreatedAt");
+
+                    b.Property<Guid?>("ImageId");
+
+                    b.Property<Guid?>("TagId");
+
+                    b.Property<DateTimeOffset>("UpdatedAt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("PictureTag");
+                });
+
+            modelBuilder.Entity("Asd123.Domain.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset>("CreatedAt");
+
+                    b.Property<string>("Text");
+
+                    b.Property<DateTimeOffset>("UpdatedAt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tag");
+                });
+
             modelBuilder.Entity("Asd123.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -77,6 +115,17 @@ namespace Asd13.Repository.EF.Migrations
                     b.HasOne("Asd123.Domain.User", "UploadedBy")
                         .WithMany("UploadedImages")
                         .HasForeignKey("UploadedById");
+                });
+
+            modelBuilder.Entity("Asd123.Domain.PictureTag", b =>
+                {
+                    b.HasOne("Asd123.Domain.ImageInfo", "Image")
+                        .WithMany("PictureTags")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("Asd123.Domain.Tag", "Tag")
+                        .WithMany("PictureTags")
+                        .HasForeignKey("TagId");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,5 +14,7 @@ namespace Asd123.Domain
         public string ImageUri { get; set; }
 
         public string ImageId { get; set; }
+
+        public ICollection<PictureTag> PictureTags { get; set; }
     }
 }
