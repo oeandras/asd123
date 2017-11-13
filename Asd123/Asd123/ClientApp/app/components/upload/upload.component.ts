@@ -31,7 +31,7 @@ export class UploadComponent {
             .getLoggedInUser()
             .subscribe(result => {
                 this.user = result;
-                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=normal";
+                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=small";
             },
             error => console.log(error));
 
@@ -65,7 +65,7 @@ export class UploadComponent {
         {
             this._imageService.uploadImage(this._files).subscribe(
                 response => {
-                    this.messageComponent.ShowMessage("Upload succeeded", MessageType.Success);
+                    this.messageComponent.ShowMessage("Upload successful", MessageType.Success);
                     this.fileBrowser.value = "";
                     this.loadImages();
                 },
@@ -87,7 +87,7 @@ export class UploadComponent {
 
     setFileBrowserString() {
         if (this._files.length == 1) {
-            this.fileBrowser.value = this._files[0];
+            this.fileBrowser.value = this._files[0].name;
         }
         else {
             this.fileBrowser.value = this._files.length + " files selected";
@@ -95,7 +95,7 @@ export class UploadComponent {
 
     }
 
-    getClick() {
-
+    profileClick($event: any) {
+        alert("My profile. Coming soon...");
     }
 }

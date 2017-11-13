@@ -1,43 +1,40 @@
+<div class="header">
+    <img class="logo inline" src="../../../../Images/logo.png">
+    <div class="title inline">ASD123 Photos</div>
+    <img (click)="profileClick()" class="inline rightalign" onmouseover="" src="{{profilepic_src}}" style="border-radius:50%; cursor:pointer;" />
+</div>
+
 <div class="container">
     <div class="footer col-md-6">
         <uimessage></uimessage>
     </div>
 
-    <div class="rightalign">
-        <img src="{{profilepic_src}}" style="border-radius:50%" />
-    </div>
-
-    <h1>Hello, <span *ngIf="name; else elseBlock"> {{ name }}! </span></h1>
-    <ng-template #elseBlock>Guest!</ng-template>
-
-    <div>
+    <div class="down">
         <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-            <div class="form-group">
-                <div class="col-md-12">
-                    <p>Upload images:</p>
-                    <div class="col-lg-6 col-sm-6 col-12">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                <span class="btn btn-primary">
-                                    Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
-                                </span>
-                            </label>
-                            <input id="fileBrowser" type="text" class="form-control" readonly>
-                        </div>
-                        <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
+            <!--<div class="form-group">-->
+            <div class="col-md-12">
+                <p>Upload images:</p>
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Browse&hellip; <input type="file" (change)="fileEvent($event)" accept="image/*" style="display: none;" multiple>
+                            </span>
+                        </label>
+                        <input id="fileBrowser" type="text" class="form-control" readonly>
                     </div>
+                    <button (click)="uploadClick()" type="button" class="btn btn-default">Upload</button>
                 </div>
             </div>
         </form>
     </div>
 
-
-    <div class="userinfo">
+    <!--<div class="userinfo">
         <h5>Name: {{user.name}}</h5>
         <h5>Email: {{user.email}}</h5>
         <h5>Gender: {{user.gender}}</h5>
         <h5>Date of Birth: {{user.dateOfBirth}}</h5>
-    </div>
+    </div>-->
 
     <div class="center" style="padding-top:120px;">
         <div *ngFor="let image of arr | async" class="col-md-4" style="padding-bottom:4px;">

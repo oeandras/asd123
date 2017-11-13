@@ -22,13 +22,13 @@
 }
 
 .photo {
-    position:absolute;
-    margin:auto;
+    /*position:absolute;
+    margin:auto;*/
     padding-top: 60px;
-    max-width: 80%;
+    max-width: 90%;
     height: auto;
 }
 
-.center{
-    text-align:center;
+.center {
+    text-align: center;
 }

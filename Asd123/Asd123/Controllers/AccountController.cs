@@ -60,7 +60,7 @@ namespace Asd123.Controllers
             IEnumerable<Claim> a = facebookIdentity.Claims;
             await _userService.EnsureUser(facebookIdentity.Claims.ToList());
 
-            return Redirect(Url.Content("/account?login=true"));
+            return Redirect(Url.Content("/upload"));
         }
 
         [Authorize]
