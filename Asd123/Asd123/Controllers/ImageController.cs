@@ -29,16 +29,17 @@ namespace Asd123.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload(List<IFormFile> files)
         {
-            if(files.Any((f) => !f.ContentType.StartsWith(@"image/")))
+            if (files.Any((f) => !f.ContentType.StartsWith(@"image/")))
             {
                 return new UnsupportedMediaTypeResult();
             }
             var facebookIdentity = User.Identities.FirstOrDefault(i => i.AuthenticationType == "Facebook" && i.IsAuthenticated);
             IEnumerable<Claim> a = facebookIdentity.Claims;
             var user = await _userService.GetById(a.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
-            
+
             List<Uri> uploadedImageUris = new List<Uri>();
             foreach (var file in files)
+            {
                 if (file.Length > 0)
                 {
                     using (var ms = new MemoryStream())
@@ -48,12 +49,7 @@ namespace Asd123.Controllers
                         uploadedImageUris.Add(uploadedImageUri);
                     }
                 }
-
-            {
-
             }
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
 
             return Ok(new { uploadedImageUris });
         }

@@ -31,7 +31,7 @@ export class UploadComponent {
             .getLoggedInUser()
             .subscribe(result => {
                 this.user = result;
-                this.profilepic_src = "https://graph.facebook.com/" + result.id + "/picture?type=small";
+                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=small";
             },
             error => console.log(error));
 
