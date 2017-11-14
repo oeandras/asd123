@@ -17,9 +17,6 @@
     text-align: center;
 }
 
-.rightalign {
-}
-
 .image-container {
     height: 240px;
     width: 360px;
@@ -32,6 +29,7 @@
     display: inline-block;
     margin: 0 auto;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .userinfo {
@@ -56,8 +54,6 @@
 .logo {
     height: 60px;
     width: 60px;
-    /*position: absolute;
-    left: 200px;*/
 }
 
 .down {
@@ -89,7 +85,6 @@
         -moz-transition: opacity .005s ease-in-out;
         -webkit-transition: opacity .005s ease-in-out;
     }
-
 
 
 .footer-message {
