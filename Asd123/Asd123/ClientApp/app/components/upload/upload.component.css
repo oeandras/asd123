@@ -8,12 +8,16 @@
     font-size: 40px;
 }
 
+.logotitle {
+    display: inline-flex;
+    padding-right: 50px;
+}
+
 .center {
     text-align: center;
 }
 
 .rightalign {
-
 }
 
 .image-container {
@@ -43,7 +47,7 @@
     top: 0;
     height: 60px;
     width: 100%;
-    z-index: 9999;
+    z-index: 99;
     float: left;
     display: block;
     background-color: whitesmoke;
@@ -52,6 +56,8 @@
 .logo {
     height: 60px;
     width: 60px;
+    /*position: absolute;
+    left: 200px;*/
 }
 
 .down {
@@ -68,6 +74,8 @@
     position: absolute;
     right: 10px;
     top: 5px;
+    height: 50px;
+    width: 50px;
     transition: opacity .005s ease-in-out;
     -moz-transition: opacity .005s ease-in-out;
     -webkit-transition: opacity .005s ease-in-out;
@@ -89,4 +97,31 @@
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+
+.profile-sideb {
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 100;
+    width: 15%;
+    text-align: center;
+    background-color: whitesmoke;
+    color: white;
+    border-radius: 8px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #454545;
+}
+
+.searchbar {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
 }

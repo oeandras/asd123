@@ -12,6 +12,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { CanActivateViaUserLoggedInGuard } from './components/guards/CanActivateViaUserServiceGuard';
 import { UIMessageComponent } from './components/uimessage/uimessage.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { UIMessageComponent } from './components/uimessage/uimessage.component';
         AccountComponent,
         LogoutComponent,
         UploadComponent,
-        UIMessageComponent
+        UIMessageComponent,
+        ProfileComponent
     ],
     imports: [
         CommonModule,
@@ -31,7 +33,7 @@ import { UIMessageComponent } from './components/uimessage/uimessage.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'upload', component: UploadComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
-            { path: 'account', component: AccountComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
+            //{ path: 'account', component: AccountComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
             { path: 'logout', component: LogoutComponent, canActivate: [CanActivateViaUserLoggedInGuard] },
             { path: '**', redirectTo: 'home' }
         ])

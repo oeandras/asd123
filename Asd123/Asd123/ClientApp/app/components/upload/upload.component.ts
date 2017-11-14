@@ -31,7 +31,7 @@ export class UploadComponent {
             .getLoggedInUser()
             .subscribe(result => {
                 this.user = result;
-                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=small";
+                this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=large";
             },
             error => console.log(error));
 
@@ -96,7 +96,9 @@ export class UploadComponent {
         }
     }
 
+    isProfileVisible: boolean = false;
     profileClick($event: any) {
-        alert("My profile. Coming soon...");
+        //alert("My profile. Coming soon...");
+        this.isProfileVisible = !this.isProfileVisible;
     }
 }
