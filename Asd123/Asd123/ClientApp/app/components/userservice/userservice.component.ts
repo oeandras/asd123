@@ -18,7 +18,7 @@ export class UserService {
     }
 
     getLoggedInUser() {
-        this._http.post(this._baseUrl + 'api/account/getloggedinuserinfo', null).subscribe(resp => (console.log("ok")), error => window.location.replace("/home"));
+        this._http.post(this._baseUrl + 'api/account/getloggedinuserinfo', null).subscribe(resp => (console.log("ok")), error => { if ((error as Response).status == 401) window.location.replace("/home");  });
         return this._http
           .post(this._baseUrl + 'api/account/getloggedinuserinfo', null)
           .map(result => {
