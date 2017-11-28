@@ -36,10 +36,5 @@ namespace Asd123.ApplicationService
             await imageRepo.Create(info);
             return result.ImageUri;
         }
-
-        public async Task<string> GetBase64String(string id)
-        {
-            return await imageRepo.GetBase64StringFromBlob(id);
-        }
     }
 }
