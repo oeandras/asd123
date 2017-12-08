@@ -6,5 +6,6 @@ namespace Asd123.ApplicationService
 {
     public interface ITagService
     {
+
     }
 }

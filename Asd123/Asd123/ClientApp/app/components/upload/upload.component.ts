@@ -21,8 +21,8 @@ export class UploadComponent {
     //private _file: any;
     private _files: File[];
     private user: User;
-    private profilepic_src: string;
-    private arr: Observable<ImageInfo[]>;
+    public profilepic_src: string;
+    public arr: Observable<ImageInfo[]>;
     private fileBrowser: HTMLInputElement;
     @ViewChild(UIMessageComponent) private messageComponent: UIMessageComponent;
 
