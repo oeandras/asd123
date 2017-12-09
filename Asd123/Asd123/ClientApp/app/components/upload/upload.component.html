@@ -14,7 +14,7 @@
         Upload images<input type="file" hidden style="display:none" (change)="fileEvent($event)">
         <i class="fa fa-upload" style="padding-left:10px;"></i>
     </label>
-    <img (click)="profileClick()" class="inline profilepic" src="{{profilepic_src}}" />
+    <img (click)="profileClick($event)" class="inline profilepic" src="{{profilepic_src}}" />
 </div>
 
 <div class="container">
