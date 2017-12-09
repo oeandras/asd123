@@ -80,7 +80,7 @@ namespace Asd123
             services.AddCors();
             services.AddMvc();
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=Asd123.NewDb;Trusted_Connection=True;";
+            var connection = Configuration["DbConnectionStringString"];
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connection));
 
