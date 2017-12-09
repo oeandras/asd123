@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class UIMessageComponent {
 
-    private isVisible: boolean = false;
+    public isVisible: boolean = false;
     private messageType: MessageType;
     private messageText: string;
 

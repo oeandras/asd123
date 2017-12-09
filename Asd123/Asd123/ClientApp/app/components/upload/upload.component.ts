@@ -18,11 +18,10 @@ export class UploadComponent {
     name: string;
     email: string;
     private _imageService: ImageService;
-    //private _file: any;
     private _files: File[];
     private user: User;
-    private profilepic_src: string;
-    private arr: Observable<ImageInfo[]>;
+    public profilepic_src: string;
+    public arr: Observable<ImageInfo[]>;
     private fileBrowser: HTMLInputElement;
     @ViewChild(UIMessageComponent) private messageComponent: UIMessageComponent;
 
@@ -34,17 +33,13 @@ export class UploadComponent {
                 this.profilepic_src = "http://graph.facebook.com/" + result.id + "/picture?type=large";
             },
             error => console.log(error));
-
+      
         this._imageService = imageService;
         userservice
             .getLoggedInUser()
             .subscribe(result => { this.user = result; this.name = result.name; this.email = result.email },
             error => console.log(error));
         this.loadImages();
-
-    }
-
-    ngOnInit() {
 
     }
 
@@ -71,7 +66,7 @@ export class UploadComponent {
                     this.messageComponent.ShowMessage("Upload failed. Please try again!", MessageType.Error);
                 });
         }
-
+     
         //this._imageService.uploadImage(this._files).subscribe(response => { alert("Success"); this.fileBrowser.value = ""; this.loadImages(); }, error => { alert("Not Success"); });
 
     }

@@ -9,6 +9,5 @@ namespace Asd123.ApplicationService
     {
         Task<Uri> UploadImage(byte[] imageBytes, User uploader, string name);
         Task<IReadOnlyCollection<ImageInfo>> FetchImagesOfUser(User user);
-        Task<string> GetBase64String(string id);
     }
 }

@@ -60,19 +60,5 @@ namespace Asd13.Repository.EF
 
             return imageInfos.FirstOrDefault();
         }
-
-        public async Task<string> GetBase64StringFromBlob(string id)
-        {
-            var blobClient = storageAccount.CreateCloudBlobClient();
-            var container = blobClient.GetContainerReference("images");
-            var blob = container.GetBlockBlobReference(id);
-            string pic;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                await blob.DownloadToStreamAsync(ms);
-                pic = Convert.ToBase64String(ms.ToArray());
-            }
-            return pic;
-        }
     }
 }
